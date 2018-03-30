@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Addign a Directive</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        AngularJS has a set of built-in directives which you can use to add functionality to your application.
+        In addition you can use the module to add your own directives to your applications.
+    -->
+    <div ng-app="myApp" my-directive></div>
+    
+    <script>
+        var app = angular.module("myApp", []);
+        app.directive("myDirective", function(){
+            return {
+                template: "Msg from directive constructor!"
+            };
+        });
+    </script>
+</body>
+</html>
