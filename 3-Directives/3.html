@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Repeating HTML Elements (Array)</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--The ng-repeat directive repeats an HTML element-->
+    <div ng-app="" ng-init="names=['Max','Jenny','Ann']">
+        <ul>
+            <li ng-repeat="x in names">
+                {{ x }}
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

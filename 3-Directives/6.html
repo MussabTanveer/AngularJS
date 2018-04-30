@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Creating New Directive with Restictions</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        The legal restrict values are:
+        -E for Element name
+        -A for Attribute
+        -C for Class
+        -M for Comment
+        By default the value is EA, meaning that both Element names and attribute names can invoke the directive
+        By adding a restrict property with the value "A", the directive can only be invoked by attributes
+    -->
+    <div ng-app="myApp">
+        <my-test-directive></my-test-directive> <!--Element name won't work-->
+        <div my-test-directive></div> <!--Attribute will work-->
+    </div>
+    
+    <script>
+        var app = angular.module("myApp", []);
+        app.directive("myTestDirective", function(){
+            return {
+                restrict: "A",
+                template: "<h1>Made by a directive!</h1>"
+            };
+        });
+    </script>
+</body>
+</html>

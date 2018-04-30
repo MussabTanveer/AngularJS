@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Creating New Directive</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        New directives are created by using the .directive function.
+        To invoke the new directive, make an HTML element with the same tag name as the new directive.
+        You can invoke a directive by using:
+        -Element name
+        -Attribute
+        -Class
+        -Comment
+        When naming a directive, you must use a camel case name, testDirective, but when invoking it, you must use - separated name, test-directive.
+    -->
+    <div ng-app="myApp">
+        <my-test-directive></my-test-directive> <!--Element name-->
+        <div my-test-directive></div> <!--Attribute-->
+        <div class="my-test-directive"></div> <!--Class-->
+        <!-- directive: my-test-directive --> <!--Comment-->
+    </div>
+    
+    <script>
+        var app = angular.module("myApp", []);
+        app.directive("myTestDirective", function(){
+            return {
+                template: "<h1>Made by a directive!</h1>"
+            };
+        });
+    </script>
+</body>
+</html>
