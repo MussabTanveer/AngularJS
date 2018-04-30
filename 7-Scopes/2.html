@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Understanding the Scope</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        If we consider an AngularJS application to consist of:
+            View, which is the HTML.
+            Model, which is the data available for the current view.
+            Controller, which is the JavaScript function that makes/changes/removes/controls the data.
+        Then the scope is the Model.
+        The scope is a JavaScript object with properties and methods, which are available for both the view and the controller.
+        If you make changes in the view, the model and the controller will be updated.
+    -->
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <h1>My name is {{name}}</h1>
+    </div>
+
+    <script>
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl", function($scope){
+        $scope.name = "John Doe";
+    });
+    </script>
+</body>
+</html>
