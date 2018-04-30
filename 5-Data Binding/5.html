@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Two-way Binding</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        Applications in AngularJS are controlled by controllers.
+        Because of the immediate synchronization of the model and the view, the controller can be completely separated from the view, and simply concentrate on the model data.
+        Thanks to the data binding in AngularJS, the view will reflect any changes made in the controller.
+    -->
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <h1 ng-click="changeName()">{{firstname}}</h1> 
+    </div>
+
+    <script>
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl", function($scope){
+        $scope.firstname = "John";
+        $scope.changeName = function(){
+            $scope.firstname = "Nelly";
+        };
+    });
+    </script>
+</body>
+</html>

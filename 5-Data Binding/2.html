@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML View</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        The HTML container where the AngularJS application is displayed, is called the view.
+        The view has access to the model, and there are several ways of displaying model data in the view.
+        You can use the ng-bind directive, which will bind the innerHTML of the element to the specified model property
+        You can also use double braces {{ }} to display content from the model
+    -->
+    <div ng-app="myApp" ng-controller="myCtrl">
+        First Name: <input type="text" ng-model="firstname">
+        Last Name: <input type="text" ng-model="lastname">
+        <p ng-bind="firstname"></p> 
+        <p>First name: {{firstname}}</p> 
+    </div>
+
+    <script>
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl", function($scope){
+        $scope.firstname = "John";
+        $scope.lastname = "Doe";
+    });
+    </script>
+</body>
+</html>

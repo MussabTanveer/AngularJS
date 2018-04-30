@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The ng-model Directive</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        Use the ng-model directive to bind data from the model to the view on HTML controls (input, select, textarea)
+        The ng-model directive provides a two-way binding between the model and the view
+    -->
+    <div ng-app="myApp" ng-controller="myCtrl">
+        Name: <input type="text" ng-model="firstname">
+        <p ng-bind="firstname"></p> 
+        <p>Name: {{firstname}}</p> 
+    </div>
+
+    <script>
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl", function($scope){
+        $scope.firstname = "John";
+    });
+    </script>
+</body>
+</html>

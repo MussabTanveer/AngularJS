@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Two-way Binding</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        Data binding in AngularJS is the synchronization between the model and the view.
+        When data in the model changes, the view reflects the change, and when data in the view changes, the model is updated as well.
+        This happens immediately and automatically, which makes sure that the model and the view is updated at all times.
+    -->
+    <div ng-app="myApp" ng-controller="myCtrl">
+        Name: <input type="text" ng-model="firstname">
+        <p ng-bind="firstname"></p> 
+        <h1>{{firstname}}</h1> 
+    </div>
+
+    <script>
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl", function($scope){
+        $scope.firstname = "John";
+        $scope.lastname = "Doe";
+    });
+    </script>
+</body>
+</html>
