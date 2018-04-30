@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Validate User Input</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--The ng-model directive can provide type validation for application data (number, e-mail, required)-->
+    <form ng-app="" name="myForm">
+        Email:
+        <input type="email" name="myAddress" ng-model="emailText">
+        <span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
+        <!--the span will be displayed only if the expression in the ng-show attribute returns true-->
+        <h1>Your email: {{emailText}}</h1>
+        Age:
+        <input type="number" name="myAge" ng-model="age">
+        <span ng-show="myForm.myAge.$error.number">Not a valid number for age</span>
+        <!--the span will be displayed only if the expression in the ng-show attribute returns true-->
+        <h1>Your age: {{age}}</h1>
+    </form>
+</body>
+</html>

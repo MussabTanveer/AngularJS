@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Classes</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<style>
+    input.ng-invalid {
+        background-color: lightblue;
+    }
+</style>
+<body>
+    <!--The ng-model directive provides CSS classes for HTML elements, depending on their status-->
+    <!--
+        The ng-model directive adds/removes the following classes, according to the status of the form field:
+        ng-empty
+        ng-not-empty
+        ng-touched
+        ng-untouched
+        ng-valid
+        ng-invalid
+        ng-dirty
+        ng-pending
+        ng-pristine
+    -->
+    <form ng-app="" name="myForm">
+        Enter your name:
+        <input name="myName" ng-model="myText" required>
+    </form>
+</body>
+</html>
