@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The $location Service</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        The $location service has methods which return information about the location of the current web page
+    -->
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <p>The url of this page is:</p>
+        <h3>{{myUrl}}</h3>
+    </div>
+    
+    <p>This example uses the built-in $location service to get the absolute url of the page.</p>
+    
+    <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope, $location) {
+        $scope.myUrl = $location.absUrl();
+    });
+    //Note that the $location service is passed in to the controller as an argument.
+    //In order to use the service in the controller, it must be defined as a dependency.
+    </script>
+</body>
+</html>

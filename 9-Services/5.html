@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create Your Own Service</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        To create your own service, connect your service to the module
+    -->
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <p>The hexadecimal value of 255 is:</p>
+        <h1>{{hex}}</h1>
+    </div>
+    
+    <p>A custom service with a method that converts a given number into a hexadecimal number.</p>
+    
+    <script>
+    var app = angular.module('myApp', []);
+    //Create a service named hexafy
+    app.service('hexafy', function(){
+        this.myFunc = function (x) {
+            return x.toString(16);
+        }
+    });
+    //To use your custom made service, add it as a dependency when defining the controller
+    app.controller('myCtrl', function($scope, hexafy) {
+        //Use the custom made service named hexafy to convert a number into a hexadecimal number
+        $scope.hex = hexafy.myFunc(255);
+    });
+    </script>
+</body>
+</html>

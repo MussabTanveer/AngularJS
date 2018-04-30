@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The $interval Service</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        The $interval service is AngularJS' version of the window.setInterval function.
+    -->
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <!--Display the time every second-->
+        <p>The time is:</p>
+        <h1>{{theTime}}</h1>
+    </div>
+    
+    <p>The $interval service runs a function every specified millisecond.</p>
+    
+    <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope, $interval) {
+        $interval(function(){
+            $scope.theTime = new Date().toLocaleTimeString();
+        }, 1000);
+    });
+    </script>
+</body>
+</html>
