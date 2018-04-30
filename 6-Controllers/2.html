@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Controller Methods</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--A controller can also have methods (variables as functions)-->
+    <div ng-app="myApp" ng-controller="personCtrl">
+        First Name: <input type="text" ng-model="firstName">
+        Last Name: <input type="text" ng-model="lastName">
+        <br>
+        Full Name: {{fullName()}}
+    </div>
+
+    <script>
+    var app = angular.module("myApp", []);
+    app.controller("personCtrl", function($scope){
+        $scope.firstName = "John";
+        $scope.lastName = "Doe";
+        $scope.fullName = function() {
+            return $scope.firstName + " " + $scope.lastName;
+        };
+    });
+    </script>
+</body>
+</html>
