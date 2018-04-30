@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The filter Filter</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        The filter filter selects a subset of an array.
+        The filter filter can only be used on arrays, and it returns an array containing only the matching items.
+    -->
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <!--Return the names that contains the letter "i":-->
+        <ul>
+            <li ng-repeat="x in names | filter : 'i'">{{x}}</li>
+        </ul>
+        <!--{{ arrayexpression | filter : expression : comparator }}
+            The expression can be of type:
+            String: The array items that match the string will be returned.
+            Object: The object is a pattern to search for in the array.
+        -->
+        <ul>
+            <li ng-repeat="x in customers | filter : {'name' : 'O', 'city' : 'London'}">
+                {{x.name + ', ' + x.city}}
+            </li>
+        </ul>
+        <!--Do a "strict" comparison, which does not return a match unless the value is exactly the same as the expression-->
+        <ul>
+            <li ng-repeat="x in customers2 | filter : 'London' : true">
+                {{x.name + ', ' + x.city}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl", function($scope){
+        $scope.names = [
+            'Jani',
+            'Carl',
+            'Margareth',
+            'Hege',
+            'Joe',
+            'Gustav',
+            'Birgit',
+            'Mary',
+            'Kai'
+        ];
+        $scope.customers = [
+            {"name" : "Alfreds Futterkiste", "city" : "Berlin"},
+            {"name" : "Around the Horn", "city" : "London"},
+            {"name" : "B's Beverages", "city" : "London"},
+            {"name" : "Bolido Comidas preparadas", "city" : "Madrid"},
+            {"name" : "Bon app", "city" : "Marseille"},
+            {"name" : "Bottom-Dollar Marketse" ,"city" : "Tsawassen"},
+            {"name" : "Cactus Comidas para llevar", "city" : "Buenos Aires"}
+        ];
+        $scope.customers2 = [
+            {"name" : "London Food", "city" : "London"},
+            {"name" : "London Catering", "city" : "London City"},
+            {"name" : "London Travel", "city" : "Heathrow, London"}
+        ];
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Filter an Array Based on User Input</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        By setting the ng-model directive on an input field, we can use the value of the input field as an expression in a filter.
+    -->
+    <div ng-app="myApp" ng-controller="namesCtrl">
+        <!--Type a letter in the input field, and the list will shrink/grow depending on the match-->
+        <p><input type="text" ng-model="test"></p>
+        <ul>
+            <li ng-repeat="x in names | filter : test">
+                {{ x }}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+    var app = angular.module("myApp", []);
+    app.controller("namesCtrl", function($scope){
+        $scope.names = [
+            'Jani',
+            'Carl',
+            'Margareth',
+            'Hege',
+            'Joe',
+            'Gustav',
+            'Birgit',
+            'Mary',
+            'Kai'
+        ];
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Adding Filters to Expressions</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        Filters can be added in AngularJS to format data.
+        Filters can be added to expressions by using the pipe character |, followed by a filter.
+    -->
+    <div ng-app="myApp" ng-controller="personCtrl">
+        <!--The uppercase filter format strings to upper case-->
+        <p>The name is {{ lastName | uppercase }}</p>
+        <!--The lowercase filter format strings to lower case-->
+        <p>The name is {{ lastName | lowercase }}</p>
+    </div>
+
+    <script>
+    var app = angular.module("myApp", []);
+    app.controller("personCtrl", function($scope){
+        $scope.firstName = "John";
+        $scope.lastName = "Doe";
+    });
+    </script>
+</body>
+</html>

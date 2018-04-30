@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Adding Filters to Directives</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        Filters are added to directives, like ng-repeat, by using the pipe character |, followed by a filter
+    -->
+    <div ng-app="myApp" ng-controller="namesCtrl">
+        <!--The orderBy filter sorts an array-->
+        <ul>
+            <li ng-repeat="x in names | orderBy:'country'">
+                {{ x.name + ', ' + x.country }}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+    var app = angular.module("myApp", []);
+    app.controller("namesCtrl", function($scope){
+        $scope.names = [
+        {name:'Jani',country:'Norway'},
+        {name:'Carl',country:'Sweden'},
+        {name:'Margareth',country:'England'},
+        {name:'Hege',country:'Norway'},
+        {name:'Joe',country:'Denmark'},
+        {name:'Gustav',country:'Sweden'},
+        {name:'Birgit',country:'Denmark'},
+        {name:'Mary',country:'England'},
+        {name:'Kai',country:'Norway'}
+        ];
+    });
+    </script>
+</body>
+</html>

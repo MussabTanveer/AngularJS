@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Custom Filters</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        You can make your own filters by registering a new filter factory function with your module
+    -->
+    <!--Make a custom filter called "myFormat":-->
+    <!--The myFormat filter will format every other character to uppercase.-->
+    <ul ng-app="myApp" ng-controller="namesCtrl">
+        <li ng-repeat="x in names">
+            {{x | myFormat}}
+        </li>
+    </ul>
+
+    <script>
+    var app = angular.module("myApp", []);
+    app.filter('myFormat', function() {
+        return function(x) {
+            var i, c, txt = "";
+            for (i = 0; i < x.length; i++) {
+                c = x[i];
+                if (i % 2 == 0) {
+                    c = c.toUpperCase();
+                }
+                txt += c;
+            }
+            return txt;
+        };
+    });
+    app.controller("namesCtrl", function($scope){
+        $scope.names = [
+            'Jani',
+            'Carl',
+            'Margareth',
+            'Hege',
+            'Joe',
+            'Gustav',
+            'Birgit',
+            'Mary',
+            'Kai'
+        ];
+    });
+    </script>
+</body>
+</html>
