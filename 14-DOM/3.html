@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The ng-hide Directive</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        AngularJS has directives for binding application data to the attributes of HTML DOM elements.
+    -->
+    <div ng-app="" ng-init="hour=13">
+        <!--The ng-hide directive hides or shows an HTML element based on the value of ng-show. -->
+        <p ng-hide="true">I am not visible.</p>
+        <p ng-hide="false">I am visible.</p>
+        <!--You can use any expression that evaluates to true or false:-->
+        <p ng-hide="hour > 12">I am not visible.</p>
+    </div>
+</body>
+</html>
