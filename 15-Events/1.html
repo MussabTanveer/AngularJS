@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mouse Events</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        Mouse events occur when the cursor moves over an element, in this order:
+            ng-mouseenter
+            ng-mouseover
+            ng-mousemove
+            ng-mouseleave
+        Or when a mouse button is clicked on an element, in this order:
+            ng-mousedown
+            ng-mouseup
+            ng-click
+        You can add mouse events on any HTML element.
+    -->
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <!--Increase the count variable when the mouse moves over the h3 element-->
+        <h3 ng-mousemove="count = count + 1">Mouse over me! mousemove</h3><br />
+        <h3 ng-mouseenter="count = count + 1">Mouse over me! mouseenter</h3><br />
+        <h3 ng-mouseover="count = count + 1">Mouse over me! mouseover</h3><br />
+        <h3 ng-mouseleave="count = count + 1">Mouse over me! mouseleave</h3><br />
+        <h3 ng-mousedown="count = count + 1">Mouse over me! mousedown (click)</h3><br />
+        <h3 ng-mouseup="count = count + 1">Mouse over me! mouseup (click)</h3><br />
+        <h3 ng-click="count = count + 1">Mouse over me! click (click)</h3><br />
+        <h3 ng-dblclick="count = count + 1">Mouse over me! dblclick (click)</h3>
+        <h3>{{ count }}</h3>
+    </div>
+
+    <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+        $scope.count = 0;
+    });
+    </script>
+</body>
+</html>

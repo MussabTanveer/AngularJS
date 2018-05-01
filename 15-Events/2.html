@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The ng-click Directive</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        The ng-click directive defines AngularJS code that will be executed when the element is being clicked.
+    -->
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <!--Increase the count variable when the button is clicked-->
+        <button ng-click="count = count + 1">Click me!</button>
+        <!--You can also refer to a function-->
+        <button ng-click="myFunction()">Click me!</button>
+        <p>{{ count }}</p>
+    </div>
+
+    <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+        $scope.count = 0;
+        $scope.myFunction = function(){
+            $scope.count++;
+        };
+    });
+    </script>
+</body>
+</html>
