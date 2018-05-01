@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Radiobuttons</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        Bind radio buttons to your application with the ng-model directive.
+        Radio buttons with the same ng-model can have different values, but only the selected one will be used.
+    -->
+    <div ng-app="">
+        <!--Display some text, based on the value of the selected radio button-->
+        <form>
+            <input type="radio" ng-model="myVar" value="dogs">Dogs
+            <input type="radio" ng-model="myVar" value="tuts">Tutorials
+            <input type="radio" ng-model="myVar" value="cars">Cars
+        </form>
+        <!--The value of myVar will be either dogs, tuts, or cars.-->
+        <h1>You selected: {{myVar}}</h1>
+    </div>
+
+</body>
+</html>

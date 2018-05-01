@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Selectbox</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        Bind select boxes to your application with the ng-model directive.
+        The property defined in the ng-model attribute will have the value of the selected option in the selectbox.
+    -->
+    <div ng-app="">
+        <!--Display some text, based on the value of the selected option-->
+        <form>
+            Select a topic:
+            <select ng-model="myVar">
+                <option value="">
+                <option value="dogs">Dogs
+                <option value="tuts">Tutorials
+                <option value="cars">Cars
+            </select>
+        </form>
+        <!--The value of myVar will be either dogs, tuts, or cars.-->
+        <h1>You selected: {{myVar}}</h1>
+    </div>
+
+</body>
+</html>

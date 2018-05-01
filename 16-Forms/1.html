@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data-Binding</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        Forms in AngularJS provides data-binding and validation of input controls.
+        Input Controls
+        Input controls are the HTML input elements:
+            input elements
+            select elements
+            button elements
+            textarea elements
+    -->
+    <div ng-app="myApp" ng-controller="formCtrl">
+        <!--Input controls provides data-binding by using the ng-model directive.-->
+        <form>
+            First Name: <input type="text" ng-model="firstname">
+        </form>
+        <!--
+            The application does now have a property named firstname.
+            The ng-model directive binds the input controller to the rest of your application.
+            The property firstname, can be referred to in a controller.
+            It can also be referred to elsewhere in the application.
+        -->
+        <h1>You entered: {{firstname}}</h1>
+    </div>
+
+    <script>
+    var app = angular.module('myApp', []);
+    app.controller('formCtrl', function($scope) {
+        $scope.firstname = "John";
+    });
+    </script>
+</body>
+</html>
