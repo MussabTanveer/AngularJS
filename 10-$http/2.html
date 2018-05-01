@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The $http Service</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <p>Today's welcome message is:</p>
+        <h1>{{myWelcome}}</h1>
+    </div>
+    
+    <p>The $http service requests a page on the server, and the response is set as the value of the "myWelcome" variable.</p>
+    
+    <!--
+        METHODS
+        The example above uses the .get method of the $http service.
+        The .get method is a shortcut method of the $http service.
+        There are several shortcut methods:
+            .delete()
+            .get()
+            .head()
+            .jsonp()
+            .patch()
+            .post()
+            .put()
+        PROPERTIES
+        The response from the server is an object with these properties:
+            .config the object used to generate the request.
+            .data a string, or an object, carrying the response from the server.
+            .headers a function to use to get header information.
+            .status a number defining the HTTP status.
+            .statusText a string defining the HTTP status.
+    -->
+    <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope, $http) {
+        $http({
+            method : "GET",
+            url : "welcome.html"
+        }).then(function mySuccess(response) {
+            $scope.myWelcome = response.data;
+        }, function myError(response) {
+            $scope.myWelcome = response.statusText;
+        });
+    });
+    </script>
+</body>
+</html>

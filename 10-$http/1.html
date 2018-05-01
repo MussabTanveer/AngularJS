@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The $http Service</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        The $http service makes a request to the server, and lets your application handle the response.
+    -->
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <p>Today's welcome message is:</p>
+        <h1>{{myWelcome}}</h1>
+    </div>
+    
+    <p>The $http service requests a page on the server, and the response is set as the value of the "myWelcome" variable.</p>
+
+    <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope, $http) {
+        $http.get("welcome.html").then(function(response){
+            $scope.myWelcome = response.data;
+        });
+    });
+    </script>
+</body>
+</html>

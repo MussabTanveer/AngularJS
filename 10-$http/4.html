@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The $http Service</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <h1>{{content}}</h1>
+    </div>
+    
+    <p>The response object has many properties. This example demonstrate the value of the data, status, and statusText properties.</p>
+
+    <script>
+    //To handle errors, add one more functions to the .then method
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope, $http) {
+        $http.get("wrongfile.html")
+        .then(function (response) {
+            $scope.content = response.data;
+        }, function(response){
+            $scope.content = "Something went wrong";
+        });
+    });
+    </script>
+</body>
+</html>
