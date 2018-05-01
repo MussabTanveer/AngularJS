@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>What Do I Use? ng-repeat vs ng-options</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        Because the ng-repeat directive repeats a block of HTML code for each item in an array, it can be used to create options in a dropdown list, but the ng-options directive was made especially for filling a dropdown list with options, and has at least one important advantage:
+        Dropdowns made with ng-options allows the selected value to be an object, while dropdowns made from ng-repeat has to be a string.
+        When the selected value can be an object, it can hold more information, and your application can be more flexible.
+    -->
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <!--The ng-repeat directive has its limitations, the selected value must be a string-->
+        <select ng-model="selectedCar1">
+            <option ng-repeat="x in cars" value="{{x.model}}">{{x.model}}</option>
+        </select>
+        <h1>You selected: {{selectedCar1}}</h1>
+        <br /><br />
+        <!--When using the ng-options directive, the selected value can be an object-->
+        <select ng-model="selectedCar2" ng-options="x.model for x in cars"></select>
+        <h1>You selected: {{selectedCar2.model}}</h1>
+        <p>Its color is: {{selectedCar2.color}}</p>
+    </div>
+    
+    <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+        $scope.cars = [
+            {model : "Ford Mustang", color : "red"},
+            {model : "Fiat 500", color : "white"},
+            {model : "Volvo XC90", color : "black"}
+        ];
+    });
+    </script>
+</body>
+</html>
