@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Classes</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+    
+    <style>
+    /*Apply styles, using standard CSS*/
+    input.ng-invalid {
+        background-color: pink;
+    }
+    input.ng-valid {
+        background-color: lightgreen;
+    }
+    /*Forms can also be styled*/
+    form.ng-pristine {
+        background-color: lightblue;
+    }
+    form.ng-dirty {
+        background-color: pink;
+    }
+    </style>
+        
+</head>
+<body>
+    <!--
+    AngularJS adds CSS classes to forms and input fields depending on their states.
+    The following classes are added to, or removed from, input fields:
+        ng-untouched The field has not been touched yet
+        ng-touched The field has been touched
+        ng-pristine The field has not been  modified yet
+        ng-dirty The field has been modified
+        ng-valid The field content is valid
+        ng-invalid The field content is not valid
+        ng-valid-key One key for each validation. Example: ng-valid-required, useful when there are more than one thing that must be validated
+        ng-invalid-key Example: ng-invalid-required
+    The following classes are added to, or removed from, forms:
+        ng-pristine No fields has not been modified yet
+        ng-dirty One or more fields has been modified
+        ng-valid The form content is valid
+        ng-invalid The form content is not valid
+        ng-valid-key One key for each validation. Example: ng-valid-required, useful when there are more than one thing that must be validated
+        ng-invalid-key Example: ng-invalid-required
+    The classes are removed if the value they represent is false.
+    Add styles for these classes to give your application a better and more intuitive user interface.
+    -->
+    <div ng-app="">
+        <form name="myForm">
+            <p>Try writing in the input field:</p>
+            <input name="myName" ng-model="myName" required>
+        </form>
+        <p>The input field requires content, and will therefore become green when you write in it.</p>
+        <p>The form gets a "ng-dirty" class when the form has been modified, and will therefore turn pink.</p>
+    </div>
+
+</body>
+</html>

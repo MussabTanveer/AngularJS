@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>E-mail</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        Use the HTML5 type email to specify that the value must be an e-mail
+    -->
+    <div ng-app="">
+        <!--The input field has to be an e-mail-->
+        <form name="myForm">
+            <input name="myInput" ng-model="myInput" type="email">
+        </form>
+        <p>The input's valid state is:</p>
+        <h1>{{myForm.myInput.$valid}}</h1>
+    </div>
+</body>
+</html>

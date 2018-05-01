@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Custom Validation</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        To create your own validation function is a bit more tricky; You have to add a new directive to your application, and deal with the validation inside a function with certain specified arguments.
+    -->
+    <div ng-app="myApp">
+        <!--Create your own directive, containing a custom validation function, and refer to it by using my-directive.
+        The field will only be valid if the value contains the character "e"-->
+        <p>Try writing in the input field:</p>
+        <form name="myForm">
+            <input name="myInput" ng-model="myInput" required my-directive>
+        </form>
+        <p>The input's valid state is:</p>
+        <h1>{{myForm.myInput.$valid}}</h1>
+        <p>The input field must contain the character "e" to be consider valid.</p>
+    </div>
+
+    <script>
+    var app = angular.module('myApp', []);
+    app.directive("myDirective", function(){
+        return {
+            require: 'ngModel',
+            link: function(scope, element, attr, mCtrl) {
+                function myValidation(value){
+                    if (value.indexOf("e") > -1) {
+                        mCtrl.$setValidity('charE', true);
+                    } else {
+                        mCtrl.$setValidity('charE', false);
+                    }
+                    return value;
+                }
+                mCtrl.$parsers.push(myValidation);
+            }
+        };
+    });
+    /*
+    Example Explained:
+    In HTML, the new directive will be referred to by using the attribute my-directive.
+    In the JavaScript we start by adding a new directive named myDirective.
+    Remember, when naming a directive, you must use a camel case name, myDirective, but when invoking it, you must use - separated name, my-directive.
+    Then, return an object where you specify that we require  ngModel, which is the ngModelController.
+    Make a linking function which takes some arguments, where the fourth argument, mCtrl, is the ngModelController,
+    Then specify a function, in this case named myValidation, which takes one argument, this argument is the value of the input element.
+    Test if the value contains the letter "e", and set the validity of the model controller to either true or false.
+    At last, mCtrl.$parsers.push(myValidation); will add the myValidation function to an array of other functions, which will be executed every time the input value changes.
+    */
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Required</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--
+        Form Validation
+        AngularJS offers client-side form validation.
+        AngularJS monitors the state of the form and input fields (input, textarea, select), and lets you notify the user about the current state.
+        AngularJS also holds information about whether they have been touched, or modified, or not.
+        You can use standard HTML5 attributes to validate input, or you can make your own validation functions.
+        Client-side validation cannot alone secure user input. Server side validation is also necessary.
+    -->
+    <!--Use the HTML5 attribute required to specify that the input field must be filled out-->
+    <div ng-app="">
+        <!--The input field is required-->
+        <form name="myForm">
+            <input name="myInput" ng-model="myInput" required>
+        </form>
+        <p>The input's valid state is:</p>
+        <h1>{{myForm.myInput.$valid}}</h1>
+    </div>
+</body>
+</html>
