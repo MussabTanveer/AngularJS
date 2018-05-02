@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AngularJS Routing</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+    <script src="../angular-1.6.9/angular-route.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <!--
+        The ngRoute module helps your application to become a Single Page Application.
+        If you want to navigate to different pages in your application, but you also want the application to be a SPA (Single Page Application), with no page reloading, you can use the ngRoute module.
+        The ngRoute module routes your application to different pages without reloading the entire application.
+    -->
+    <!--Navigate to "red.html", "green.html", and "blue.html"-->
+    <p><a href="#/!">Main</a></p>
+
+    <a href="#!red">Red</a>
+    <a href="#!green">Green</a>
+    <a href="#!blue">Blue</a>
+
+    <!--our application needs a container to put the content provided by the routing.
+    This container is the ng-view directive.
+    Applications can only have one ng-view directive, and this will be the placeholder for all views provided by the route.
+    There are three different ways to include the ng-view directive in your application-->
+    <!-- First way: -->
+    <div ng-view></div>
+    <!-- Second way:
+    <ng-view></ng-view> -->
+    <!-- Third way:
+    <div class="ng-view"></div> -->
+
+    <p>Click on the links to navigate to "red.html", "green.html", "blue.html", or back to "main.html"</p>
+
+    <script>
+    var app = angular.module("myApp", ["ngRoute"]); //add the ngRoute as a dependency in the application module
+    //Now your application has access to the route module, which provides the $routeProvider.
+    //Use the $routeProvider to configure different routes in your application
+    app.config(function($routeProvider) {
+        //Define a $routeProvider
+        $routeProvider
+        .when("/", {
+            templateUrl : "main.html"
+        })
+        .when("/red", {
+            templateUrl : "red.html"
+        })
+        .when("/green", {
+            templateUrl : "green.html"
+        })
+        .when("/blue", {
+            templateUrl : "blue.html"
+        });
+    });
+    </script>
+</body>
+</html>
