@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Transitions</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+    <script src="../angular-1.6.9/angular-animate.min.js"></script>
+    <style>
+    div {
+        transition: all linear 0.5s;
+        background-color: lightblue;
+        height: 100px;
+    }
+    .ng-hide {
+        height: 0;
+    }
+    </style>
+</head>
+<body ng-app="myApp">
+    <!--
+        CSS transitions allows you to change CSS property values smoothly, from one value to another, over a given duration
+    -->
+    <!--When the DIV element gets the .ng-hide class, the transition will take 0.5 seconds, and the height will smoothly change from 100px to 0-->
+    <h1>Hide the DIV: <input type="checkbox" ng-model="myCheck"></h1>
+    <div ng-hide="myCheck"></div>
+
+    <script>
+    var app = angular.module('myApp', ['ngAnimate']);
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Animations</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+    <script src="../angular-1.6.9/angular-animate.min.js"></script>
+    <style>
+    @keyframes myChange {
+        from {
+            height: 100px;
+        } to {
+            height: 0;
+        }
+    }
+    div {
+        height: 100px;
+        background-color: lightblue;
+    }
+    div.ng-hide {
+        animation: 0.5s myChange;
+    }
+    </style>
+</head>
+<body ng-app="myApp">
+    <!--
+        CSS Animations allows you to change CSS property values smoothly, from one value to another, over a given duration
+    -->
+    <!--When the DIV element gets the .ng-hide class, the myChange animation will run, which will smoothly change the height from 100px to 0-->
+    <h1>Hide the DIV: <input type="checkbox" ng-model="myCheck"></h1>
+    <div ng-hide="myCheck"></div>
+
+    <script>
+    var app = angular.module('myApp', ['ngAnimate']);
+    </script>
+</body>
+</html>
