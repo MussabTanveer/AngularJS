@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Include Cross Domains</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+    <!--
+        By default, the ng-include directive does not allow you to include files from other domains.
+        To include files from another domain, you can add a whitelist of legal files and/or domains in the config function of your application
+        Be sure that the server on the destination allows cross domain file access.
+    -->
+    <div ng-include="'https://tryit.w3schools.com/angular_include.php'"></div>
+    
+    <script>
+    var app = angular.module('myApp', [])
+    app.config(function($sceDelegateProvider) {
+        $sceDelegateProvider.resourceUrlWhitelist([
+            'https://tryit.w3schools.com/**'
+        ]);
+    });
+    </script>
+</body>
+</html>

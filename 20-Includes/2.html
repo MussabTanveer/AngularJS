@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Include AngularJS Code</title>
+    <script src="../angular-1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <!--Include the file "myTable.htm" in your web page, and all AngularJS code will be executed, even the code inside the included file-->
+    <div ng-app="myApp" ng-controller="customersCtrl">
+        <div ng-include="'myTable.html'"></div>
+    </div>
+
+    <script>
+    var app = angular.module('myApp', []);
+    app.controller('customersCtrl', function($scope, $http) {
+        $http.get("customers.php").then(function (response) {
+            $scope.names = response.data.records;
+        });
+    });
+    </script>
+</body>
+</html>
